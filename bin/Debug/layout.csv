@@ -1,0 +1,77 @@
+Tipo;ID;Etichetta;Valore
+Dimension;acquisti_44;Mese;Month_D_ITA
+Dimension;acquisti_63;Documento;DocNumber
+Dimension;acquisti_57;Settore Merceologico;EntityProductMarket_d
+Dimension;acquisti_47;Data;Date
+Dimension;acquisti_46;Plant;Plant_d
+Dimension;acquisti_50;Classe Materiale;MaterialClass
+Dimension;acquisti_41;Commessa;Subcontract
+Dimension;acquisti_55;Modalità di Consegna;DeliveryKind_d
+Dimension;acquisti_60;Nr Bolla;DeliveryNoteNr
+Dimension;acquisti_40;Articolo;Item_cd
+Dimension;acquisti_58;UM Principale;MainUM_d
+Dimension;acquisti_71;Azienda;Company_d
+Dimension;acquisti_61;Data Fattura;InvoiceDate
+Dimension;acquisti_67;Categoria Articolo III;[Item Class III_d]
+Dimension;acquisti_49;Categoria Fornitore;EntityCategory_d
+Dimension;acquisti_59;Data Bolla;DeliveryNoteDate
+Dimension;acquisti_64;Anno Mese;YearMonth
+Dimension;acquisti_43;Anno;Year
+Dimension;acquisti_56;Modalità di Spedizione;ShipmentKind_d
+Dimension;acquisti_39;Fornitore;Supplier_cd
+Dimension;acquisti_68;Tipo Statistico;StType
+Dimension;acquisti_62;Nr Fattura;Invoice
+Dimension;acquisti_42;Agente;RegistrySalesAccount_d
+Dimension;acquisti_66;Categoria Articolo II;[Item Class II_d]
+Dimension;acquisti_69;Riga Documento;RowNumber
+Dimension;acquisti_45;Nazione;Country_d
+Dimension;acquisti_48;Tipo Articolo;[Item Type]
+Dimension;acquisti_65;Categoria Articolo;[Item Class_d]
+Dimension;acquisti_54;Trimestre;Quarter
+Dimension;acquisti_51;Modalità Pagamento;PaymentCode_d
+Dimension;acquisti_52;Linea Prodotto;ProductLine_d
+Dimension;acquisti_53;Giorno;Day
+Dimension;acquisti_70;Tipo Documento;DocType
+Measure;acquisti_104;Media Giorni Ritardo AC;sum({<DeliveryDateClass={'After'},StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]*DeliveryDateVariance)/sum({<DeliveryDateClass={'After'},StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>} TOTAL [Net Amount])
+Measure;acquisti_23;Ricevuto;sum({<StType={'PF'}>}[Net Amount])
+Measure;acquisti_6;Ordinato AC;sum({<StType={'POT'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_27;Delta % Ricevuto AC/AP;(sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])-sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))/sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_107;Delta Ordinato Qtà. AC/AP;sum({<StType={'POT'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1])-sum({<StType={'POT'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1])
+Measure;acquisti_9;Ordinato Qtà AC;sum({<StType={'POT'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1])
+Measure;acquisti_4;Ricevuto Qta. Ultimo Mese AC;sum({<StType={'PF'}[Year]={"$(#=max([Year])-0)"},[Month]={"$(#=max([Month])-0)"}>}[Quantity1])
+Measure;acquisti_31;Delta % Ricevuto Qta. AC/AP;(sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1])-sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1]))/sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1])
+Measure;acquisti_20;Ricevuto Qtà;sum({<StType={'PF'}>}Quantity1)
+Measure;acquisti_106;Media Giorni Ritardo AP;sum({<DeliveryDateClass={'After'},StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]*DeliveryDateVariance)/sum({<DeliveryDateClass={'After'},StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>} TOTAL [Net Amount])
+Measure;acquisti_13;Ricevuto Ultimo Mese AP;sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_15;Ordinato AP;sum({<StType={'POT'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_1;Ricevuto Qtà AC;sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1)
+Measure;acquisti_2;Ricevuto AC;sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_19;Ordinato Residuo Qtà AP;sum({<StType={'PO'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1])
+Measure;acquisti_3;Ricevuto Ultimo Mese AC;sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_21;Ordinato Residuo Qtà;sum({<StType={'PO'}>}Quantity1)
+Measure;acquisti_5;Ordinato;sum({<StType={'POT'}>}[Net Amount])
+Measure;acquisti_33;Delta Volume;(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))/(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))*(sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))-(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))
+Measure;acquisti_14;Ricevuto Qta. Ultimo Mese AP;sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"$(#=max([Month])-0)"}>}Quantity1)
+Measure;acquisti_16;Ordinato Residuo AP;sum({<StType={'PO'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_102;Delta Mix %;((sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])-sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))-((sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))/(sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))*(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))-(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])))-((sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))/(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))*(sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))-(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))))/sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_11;Ricevuto Qtà AP;sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1)
+Measure;acquisti_10;Ordinato Residuo Qtà AC;sum({<StType={'PO'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1])
+Measure;acquisti_29;Delta % Ordinato AC/AP;(sum({<StType={'POT'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])-sum({<StType={'POT'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))/sum({<StType={'POT'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_34;Delta Mix;(sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])-sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))-((sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))/(sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))*(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))-(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])))-((sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))/(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))*(sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))-(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])))
+Measure;acquisti_12;Ricevuto AP;sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_24;Ordinato Residuo;sum({<StType={'PO'}>}[Net Amount])
+Measure;acquisti_108;Delta % Ordinato Qtà. AC/AP;(sum({<StType={'POT'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1])-sum({<StType={'POT'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1]))/sum({<StType={'POT'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1])
+Measure;acquisti_105;Media Giorni AP;sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]*DeliveryDateVariance)/sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>} TOTAL [Net Amount])
+Measure;acquisti_25;Ricevuto non Fatt.;sum({<StType={'PE'}>}[Net Amount])
+Measure;acquisti_7;Ordinato Residuo AC;sum({<StType={'PO'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_30;Delta Ricevuto Qta. AC/AP;sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1])-sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1])
+Measure;acquisti_22;Ordinato Qtà;sum({<StType={'POT'}>}Quantity1)
+Measure;acquisti_103;Media Giorni AC;sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]*DeliveryDateVariance)/sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>} TOTAL [Net Amount])
+Measure;acquisti_28;Delta Ordinato AC/AP;sum({<StType={'POT'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])-sum({<StType={'POT'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_32;Delta Prezzo;(sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))/(sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))*(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))-(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))
+Measure;acquisti_100;Delta Prezzo %;((sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))/(sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))*(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))-(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])))/sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_18;Ordinato Qtà AP;sum({<StType={'POT'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Quantity1])
+Measure;acquisti_26;Delta Ricevuto AC/AP;sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])-sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_17;Ricevuto non Fatt. AP;sum({<StType={'PE'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_101;Delta Volume %;((sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount]))/(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))*(sum({<StType={'PF'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}Quantity1))-(sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])))/sum({<StType={'PF'},[Year]={"$(#=max([Year])-1)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
+Measure;acquisti_8;Ricevuto non Fatt. AC;sum({<StType={'PE'},[Year]={"$(#=max([Year])-0)"},[Month]={"<=$(#=max([Month])-0)"}>}[Net Amount])
